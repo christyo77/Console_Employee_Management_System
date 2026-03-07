@@ -1,0 +1,130 @@
+Nice one 👍 — this is a perfect capstone-style project for teaching OOP + SOLID without jumping into databases yet.
+
+Below is a complete, student-friendly project brief you can give directly to your students. It’s designed for Java, uses ArrayList for storage, and forces them to apply all OOP pillars and SOLID principles.
+
+🧑‍💼 Employee Management System (OOP + SOLID Project)
+📌 Project Overview
+Build a console-based Employee Management System that allows an organization to manage employees, their roles, salaries, and performance using Object-Oriented Programming principles and SOLID design principles.
+
+👉 Data storage must use ArrayList (no database, no files).
+
+🎯 Learning Objectives
+By completing this project, the student should demonstrate:
+
+Encapsulation
+Inheritance
+Polymorphism
+Abstraction
+SOLID principles (S, O, L, I, D)
+Proper class design
+Clean and maintainable code
+Use of ArrayList for in-memory storage
+⚙️ Functional Requirements
+1️⃣ Employee Management
+The system should allow the user to:
+
+Add a new employee
+View all employees
+Search for an employee by ID
+Update employee details
+Remove an employee
+Calculate salary
+2️⃣ Employee Types (Inheritance + Polymorphism)
+There should be different types of employees:
+
+Full-Time Employee
+Part-Time Employee
+Contract Employee
+Each employee type should calculate salary differently.
+
+3️⃣ Menu System
+A console menu like:
+
+1. Add Employee ✅
+2. View All Employees ✅
+3. Search Employee (By name) ✅ By Id
+4. Update Employee
+5. Delete Employee
+6. Calculate Salary
+7. Exit
+All fields must be private
+Access data using getters and setters
+Validate input (e.g. salary must not be negative)
+Polymorphism
+
+ArrayList<Employee>
+
+Call calculateSalary() without knowing the actual employee type
+SOLID Principles (Mandatory)
+
+Single Responsibility Principle (SRP)
+
+Each class must have one responsibility.
+
+Examples:
+
+Employee → employee data
+SalaryCalculator → salary logic
+EmployeeService → business logic
+EmployeeMenu → user interaction
+Open/Closed Principle (OCP)
+
+You should be able to add a new employee type without modifying existing code.
+Example: Add InternEmployee later with no changes to core logic.
+Interface Segregation Principle (ISP)
+Create small, focused interfaces.
+
+Example:
+interface Payable {
+double calculateSalary();
+}
+
+Dependency Inversion Principle (DIP)
+
+High-level classes should depend on interfaces
+Example:
+
+interface EmployeeRepository {
+void add(Employee employee);
+ArrayList<Employee> getAll();
+}
+
+Suggested Class Structure
+
+model/
+├── Employee (abstract)
+├── FullTimeEmployee
+├── PartTimeEmployee
+├── ContractEmployee
+
+repository/
+├── EmployeeRepository (interface)
+├── ArrayListEmployeeRepository
+
+service/
+├── EmployeeService
+├── SalaryService
+
+ui/
+├── EmployeeMenu
+
+Main.java
+
+Sample Behavior (Console)
+
+Enter employee type:
+
+Full-Time
+Part-Time
+Contract
+Enter name:
+Enter department:
+Enter base salary:
+
+Employee added successfully!
+
+Bonus Features (Optional but Encouraged)
+
+Sort employees by salary or name
+Prevent duplicate employee IDs
+
