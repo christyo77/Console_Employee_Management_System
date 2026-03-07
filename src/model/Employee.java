@@ -13,6 +13,9 @@ public abstract class Employee {
         this.baseSalary = baseSalary;
     }
 
+    //TODO
+    //Create abstract method to calculate Salary
+
     public String getDept() {
         return dept;
     }
