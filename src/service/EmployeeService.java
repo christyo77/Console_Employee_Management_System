@@ -24,4 +24,11 @@ public class EmployeeService {
 
     //TODO
     //Complete the service for delete and updating employee;
+    public void deleteEmployee (int employeeID) {
+        employeeRepository.deleteEmployee(employeeID);
+    }
+
+    public void updateEmployee (int employeeID, Employee employee) {
+        employeeRepository.updateEmployee(employeeID,employee);
+    }
 }

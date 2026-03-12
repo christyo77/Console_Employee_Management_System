@@ -4,17 +4,18 @@ public abstract class Employee {
     private String dept;
     private int id;
     private String name;
-    private double baseSalary;
+    private double baseAnnualSalary;
 
-    public Employee(String dept, int id, String name, double baseSalary) {
+    public Employee(String dept, int id, String name, double baseAnnualSalary) {
         this.dept = dept;
         this.id = id;
         this.name = name;
-        this.baseSalary = baseSalary;
+        this.baseAnnualSalary = baseAnnualSalary;
     }
 
     //TODO
     //Create abstract method to calculate Salary
+    public abstract double calculateSalary ();
 
     public String getDept() {
         return dept;
@@ -28,8 +29,8 @@ public abstract class Employee {
         return name;
     }
 
-    public double getBaseSalary() {
-        return baseSalary;
+    public double getBaseAnnualSalary() {
+        return baseAnnualSalary;
     }
 
     public void setDept(String dept) {
@@ -44,8 +45,8 @@ public abstract class Employee {
         this.name = name;
     }
 
-    public void setBaseSalary(double baseSalary) {
-        this.baseSalary = baseSalary;
+    public void setBaseAnnualSalary(double baseAnnualSalary) {
+        this.baseAnnualSalary = baseAnnualSalary;
     }
 
     @Override
@@ -54,7 +55,7 @@ public abstract class Employee {
                 "dept='" + dept + '\'' +
                 ", id=" + id +
                 ", name='" + name + '\'' +
-                ", baseSalary=" + baseSalary +
+                ", baseAnnualSalary=" + baseAnnualSalary +
                 '}';
     }
 }

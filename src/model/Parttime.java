@@ -36,5 +36,17 @@ public class Parttime extends Employee{
         this.hoursPerWeek = hoursPerWeek;
     }
 
-    //Create a method or variable to calculate full salary- Part-time: Salary = hourlyRate × hours
+    //Create a method or variable to calculate weekly Part-time Salary = hourlyRate × hours
+    @Override
+    public double calculateSalary() {
+        double calculatedHourlyRate = getBaseAnnualSalary() / 2080;
+
+            if (this.hoursPerWeek <= 0) {
+                System.out.println("Invalid hours worked");
+                return 0;
+            }
+
+            return this.hourlyRate * this.hoursPerWeek;
+        }
+
 }

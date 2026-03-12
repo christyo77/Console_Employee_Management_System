@@ -26,6 +26,17 @@ public class Fulltime extends Employee{
         this.annualBonus = annualBonus;
     }
 
+    //Create a method or variable to calculate full salary- Full-time: Salary = base + bonus
+    @Override
+    public double calculateSalary() {
+        double salary = getBaseAnnualSalary();
+        if (salary <= 0) {
+            System.out.println("Invalid Salary Amount");
+            return 0;
+        }
+        return salary + this.annualBonus;
+    }
+
     @Override
     public String toString() {
         return "Fulltime{" +
@@ -34,11 +45,11 @@ public class Fulltime extends Employee{
                 " name=" + getName() +
                 " dept=" + getDept() +
                 " id=" + getId() +
-                " baseSalary=" + getBaseSalary() +
+                " baseSalary=" + getBaseAnnualSalary() +
                 '}';
     }
 
-    //Create a method or variable to calculate full salary- Full-time: Salary = base + bonus
+
 
 
 }
