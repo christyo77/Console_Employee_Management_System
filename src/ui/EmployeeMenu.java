@@ -1,7 +1,9 @@
 package ui;
 
+import model.Contract;
 import model.Employee;
 import model.Fulltime;
+import model.Parttime;
 import service.EmployeeService;
 
 import java.sql.SQLOutput;
@@ -11,6 +13,7 @@ public class EmployeeMenu {
     private EmployeeService employeeService;
     private final Scanner scanner = new Scanner(System.in);
 
+    //Inversion of Control
     public EmployeeMenu(EmployeeService employeeService){
         this.employeeService = employeeService;
     }
@@ -37,12 +40,37 @@ public class EmployeeMenu {
                     addEmployee();
                     break;
                 case 2:
-                    System.out.println(employeeService.getAllEmployee());
+                    viewAllEmployee();
+                    break;
+                case 3:
+                    updateEmployee();
+                    break;
+                case 4:
+                    deleteEmployee();
+                    break;
+                case 5:
+                    searchById();
                     break;
                 default:
                     System.out.println("Invalid choice!!");
 
             }
+        }
+    }
+
+    //TODO Complete all the methods below
+    private void searchById() {
+    }
+
+    private void deleteEmployee() {
+    }
+
+    private void updateEmployee() {
+    }
+
+    private void viewAllEmployee() {
+        for(Employee employee: employeeService.getAllEmployee()){
+            System.out.println(employee.toString());
         }
     }
 
@@ -68,12 +96,35 @@ public class EmployeeMenu {
             System.out.print("Enter annual bonus: ");
             double annualBonus = scanner.nextDouble();
             employee = new Fulltime(dept, id, name, baseSalary, true, annualBonus);
-            employeeService.addEmployee(employee);
         } else if (choice == 2) {
+            System.out.println("Enter hourly rate: ");
+            double hourlyRate = scanner.nextDouble();
+            System.out.println("Enter hours per week: ");
+            int hoursPerWeek = scanner.nextInt();
+
+            employee = new Parttime(dept, id, name, baseSalary, false, hourlyRate, hoursPerWeek);
 
         } else if (choice == 3) {
+            System.out.println("Contract end date: ");
+            String endDate = scanner.next();
+            System.out.println("Contract start date: ");
+            String startDate = scanner.next();
+            System.out.println("Agency Name: ");
+            String agencyName = scanner.next();
+            System.out.println("Contract value: ");
+            double contractValue = scanner.nextDouble();
+
+            employee = new Contract(dept, id, name, baseSalary, endDate, startDate, agencyName, contractValue);
 
         }
 
+        if (employeeService.addEmployee(employee)){
+            System.out.println("Employee added successfully");
+        }else {
+            System.out.println("Something went wrong!");
+        }
+
     }
+
+
 }

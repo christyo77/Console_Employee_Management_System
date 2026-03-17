@@ -76,4 +76,19 @@ public class Contract extends  Employee{
         return contractValue / (double) duration;
     }
 
+    @Override
+    public String toString() {
+        return "Parttime{" +
+                "id = " + getId() +
+                "dept = " + getDept() +
+                "name = " + getName() +
+                "base salary = " + getBaseAnnualSalary() +
+                "Start date = " + this.contractStartDate +
+                "End date = "+ this.contractEndDate +
+                "Agency Name: " + this.agencyName +
+                "Contract value: " + this.contractValue +
+                "Net salary = " + calculateSalary() +
+                '}';
+    }
+
 }

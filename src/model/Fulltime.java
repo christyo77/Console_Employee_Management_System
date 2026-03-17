@@ -46,6 +46,7 @@ public class Fulltime extends Employee{
                 " dept=" + getDept() +
                 " id=" + getId() +
                 " baseSalary=" + getBaseAnnualSalary() +
+                "Net salary = "+ calculateSalary() +
                 '}';
     }
 

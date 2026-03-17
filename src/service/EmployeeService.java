@@ -8,13 +8,24 @@ import java.util.List;
 public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
+    //Inversion of control
     public EmployeeService(EmployeeRepository employeeRepository){
         this.employeeRepository = employeeRepository;
     }
 
-    public void addEmployee(Employee employee){
-        employeeRepository.addEmployee(employee);
+    public boolean addEmployee(Employee employee){
+        //TODO check if employee ID exist before adding
+        if(getEmployeeById(employee.getId()) == null){
+            employeeRepository.addEmployee(employee);
+            return true;
+        }
+        else {
+            System.out.println("Employee Id already exist!!!");
+        }
+        return false;
     }
+
+
     public Employee getEmployeeById(int id){
         return employeeRepository.getById(id);
     }
