@@ -78,15 +78,16 @@ public class Contract extends  Employee{
 
     @Override
     public String toString() {
-        return "Parttime {" +
+        return "Parttime{" +
                 "id = " + getId() +
-                ", dept = " + getDept() +
-                ", name = " + getName() +
-                ", Start date = " + this.contractStartDate +
-                ", End date = "+ this.contractEndDate +
-                ", Agency Name: " + this.agencyName +
-                ", Contract value: " + this.contractValue +
-                ", Net salary = " + calculateSalary() +
+                "dept = " + getDept() +
+                "name = " + getName() +
+                "base salary = " + getBaseAnnualSalary() +
+                "Start date = " + this.contractStartDate +
+                "End date = "+ this.contractEndDate +
+                "Agency Name: " + this.agencyName +
+                "Contract value: " + this.contractValue +
+                "Net salary = " + calculateSalary() +
                 '}';
     }
 

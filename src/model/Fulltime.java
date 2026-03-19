@@ -39,14 +39,14 @@ public class Fulltime extends Employee{
 
     @Override
     public String toString() {
-        return "Fulltime {" +
+        return "Fulltime{" +
                 "hasHealthInsurance=" + hasHealthInsurance +
                 ", annualBonus=" + annualBonus +
-                ", name=" + getName() +
-                ", dept=" + getDept() +
-                ", id=" + getId() +
-                ", baseSalary=" + getBaseAnnualSalary() +
-                ", Net salary = "+ calculateSalary() +
+                " name=" + getName() +
+                " dept=" + getDept() +
+                " id=" + getId() +
+                " baseSalary=" + getBaseAnnualSalary() +
+                "Net salary = "+ calculateSalary() +
                 '}';
     }
 
