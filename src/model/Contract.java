@@ -78,7 +78,7 @@ public class Contract extends  Employee{
 
     @Override
     public String toString() {
-        return "Parttime{" +
+        return "Contract{" +
                 "id = " + getId() +
                 "dept = " + getDept() +
                 "name = " + getName() +
