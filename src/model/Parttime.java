@@ -49,4 +49,17 @@ public class Parttime extends Employee{
             return this.hourlyRate * this.hoursPerWeek;
         }
 
+    @Override
+    public String toString() {
+        return "Parttime{" +
+                "id = " + getId() +
+                "dept = " + getDept() +
+                "name = " + getName() +
+                "base salary = " + getBaseAnnualSalary() +
+                "eligibleForBenefits=" + eligibleForBenefits +
+                ", hourlyRate=" + hourlyRate +
+                ", hoursPerWeek=" + hoursPerWeek +
+                "Net salary = " + calculateSalary() +
+                '}';
+    }
 }

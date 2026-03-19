@@ -13,7 +13,7 @@ public abstract class Employee {
         this.baseAnnualSalary = baseAnnualSalary;
     }
 
-    //TODO
+
     //Create abstract method to calculate Salary
     public abstract double calculateSalary ();
 
