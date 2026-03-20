@@ -75,51 +75,67 @@ public class EmployeeMenu {
     private void updateEmployee() {
         System.out.println("Enter an employee ID to update:");
         int id = scanner.nextInt();
-        System.out.println("Select employee type (Enter the corresponding number):");
-        int employeeType = scanner.nextInt();;
-        String choice = switch (employeeType){
-            case 1 -> "Full time";
-            case 2 -> "Part time";
-            case 3 -> "Contract";
-            default -> "Invalid choice!!";
-        };
+        System.out.println("Select the new employee type (Enter the corresponding number). 1 = Fulltime, 2 = Parttime, 3 = Contract: ");
+        int employeeType = 1;
+
+       try {
+           employeeType = scanner.nextInt();
+
+           if (employeeType != 1 && employeeType != 2 && employeeType != 3) {
+               throw new RuntimeException("Invalid choice!");
+           }
+       } catch (RuntimeException e) {
+           System.out.println("You must enter 1, 2 or 3");
+           return;
+       }
 
         Employee existing = employeeService.getEmployeeById(id);
+        System.out.println(existing);
+
         Employee updatedEmployee = null;
         System.out.println("Enter new name: ");
         String name = scanner.next();
 
-        System.out.print("Department: ");
+        System.out.print("Enter new Department: ");
         String dept = scanner.next();
 
-        System.out.print("Base Salary: ");
+        System.out.print("Enter new Base Salary: ");
         double baseSalary = scanner.nextDouble();
 
-
          if (employeeType == 1) {
-             System.out.print("Enter annual bonus: ");
+             System.out.print("Enter the new annual bonus: ");
              double annualBonus = scanner.nextDouble();
+             scanner.nextLine();
              System.out.println("Enter true OR false if the employee has health insurance: ");
-             boolean healthInsurance = scanner.hasNextBoolean();
+             boolean healthInsurance = scanner.nextBoolean();
              updatedEmployee = new Fulltime(dept,id, name, baseSalary, healthInsurance, annualBonus);
-             employeeService.updateEmployee(id, updatedEmployee);
+
          }
        else if (employeeType == 2) {
+           scanner.nextLine();
             System.out.println("Enter true OR false if the employee is eligible for benefits: ");
-            boolean eligibleForBenefits = scanner.hasNextBoolean();
-            System.out.println("Enter hourly rate: ");
+            boolean eligibleForBenefits = scanner.nextBoolean();
+            System.out.println("Enter the new hourly rate: ");
             double hourlyRate = scanner.nextDouble();
-            System.out.println("Enter hourly rate: ");
+            System.out.println("Enter the new hours per week: ");
             int hoursPerWeek = scanner.nextInt();
             updatedEmployee = new Parttime(dept,id, name, baseSalary, eligibleForBenefits, hourlyRate,hoursPerWeek);
-            employeeService.updateEmployee(id, updatedEmployee);
+
         }
        else if (employeeType == 3) {
-             System.out.println("");
+             System.out.println("Enter the new Contract end date: ");
+             String endDate = scanner.next();
+             System.out.println("Enter the new Contract start date: ");
+             String startDate = scanner.next();
+             System.out.println("Enter the new Agency Name: ");
+             String agencyName = scanner.next();
+             System.out.println("Enter the new Contract value: ");
+             double contractValue = scanner.nextDouble();
 
+             updatedEmployee = new Contract(dept, id, name, baseSalary, endDate, startDate, agencyName, contractValue);
          }
 
-
+        employeeService.updateEmployee(id, updatedEmployee);
     }
 
     private void viewAllEmployee() {
@@ -179,6 +195,4 @@ public class EmployeeMenu {
         }
 
     }
-
-
 }
